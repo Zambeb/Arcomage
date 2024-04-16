@@ -45,9 +45,9 @@ public class DropPlace : MonoBehaviour, IDropHandler
                 card.GManager.FoldCards.Add(card.GetComponent<CardInfo>());
                 if (GManager.FoldCards.Count > 0)
                 {
-                    card.GManager.FoldCards.Remove(card.GetComponent<CardInfo>()); // Удалить карту из FoldCards
-                    card.GManager.CurrentGame.Deck.Add(card.GetComponent<CardInfo>().SelfCard); // Добавить карту в Deck
-                    Destroy(card.gameObject); // Уничтожить игровой объект карты
+                    card.GManager.FoldCards.Remove(card.GetComponent<CardInfo>()); 
+                    card.GManager.CurrentGame.Deck.Add(card.GetComponent<CardInfo>().SelfCard); 
+                    Destroy(card.gameObject); 
 
                     if (GManager.waitToDiscard == true)
                     {

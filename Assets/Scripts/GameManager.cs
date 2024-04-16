@@ -261,85 +261,6 @@ public class GameManager : MonoBehaviour
 
     void EnemyTurn(List<CardInfo> cards)
     {
-        /*
-         bool hasPlayedCard = false;
-
-    foreach (var cardInfo in cards)
-    {
-        Card card = cardInfo.SelfCard;
-
-        // Проверка ресурсов противника для разыгрывания карты
-        if (card.Resource == 1)
-        {
-            if (card.Cost <= EnemyBricks)
-            {
-                hasPlayedCard = true; // Противник сыграл карту
-                cardInfo.ShowCardInfo(cardInfo.SelfCard);
-                cardInfo.transform.SetParent(Field);
-                PlayCard playCard = cardInfo.GetComponent<PlayCard>();
-                if (playCard != null)
-                {
-                    playCard.Play(cardInfo.SelfCard);
-                }
-            }
-        }
-        else if (card.Resource == 2)
-        {
-            if (card.Cost <= EnemyGems)
-            {
-                hasPlayedCard = true; // Противник сыграл карту
-                cardInfo.ShowCardInfo(cardInfo.SelfCard);
-                cardInfo.transform.SetParent(Field);
-                PlayCard playCard = cardInfo.GetComponent<PlayCard>();
-                if (playCard != null)
-                {
-                    playCard.Play(cardInfo.SelfCard);
-                }
-            }
-        }
-        else if (card.Resource == 3)
-        {
-            if (card.Cost <= EnemyRecruits)
-            {
-                hasPlayedCard = true; // Противник сыграл карту
-                cardInfo.ShowCardInfo(cardInfo.SelfCard);
-                cardInfo.transform.SetParent(Field);
-                PlayCard playCard = cardInfo.GetComponent<PlayCard>();
-                if (playCard != null)
-                {
-                    playCard.Play(cardInfo.SelfCard);
-                }
-            }
-        }
-
-        // Если была разыграна карта с PlayAgain == true, противник разыгрывает или сбрасывает ещё одну карту
-        if (card.PlayAgain && hasPlayedCard)
-        {
-            hasPlayedCard = false; // Сброс флага после разыгрывания одной карты с PlayAgain == true
-            
-            // Ваш код для разыгрывания или сброса ещё одной карты
-            EnemyTurn(EnemyHandCards);
-        }
-    }
-
-    // Если противник не сыграл ни одной карты (не хватает ресурсов), то сбрасывается первая или вторая карта в руке
-    if (!hasPlayedCard)
-    {
-        foreach (var cardInfo in cards)
-        {
-            if (cardInfo.SelfCard.Name != "Lodestone")
-            {
-                // Сброс первой карты
-                cardInfo.gameObject.SetActive(false); // Скрываем карту
-                CurrentGame.Deck.Add(cardInfo.SelfCard); // Помещаем карту в колоду
-                EnemyHandCards.Remove(cardInfo); // Удаляем карту из руки противника
-                Destroy(cardInfo.gameObject); // Уничтожаем игровой объект карты
-                break; // Выходим из цикла после сброса карты
-            }
-        }
-    }
-    */
-
         int count = 1;
 
         for (int i = 0; i < count; i++)
@@ -363,22 +284,19 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         List<CardInfo> tempPreviousTurnCards = new List<CardInfo>(PreviousTurnCards);
-    
-        // Очищаем FieldCards от карт предыдущего хода
+        
         foreach (var card in tempPreviousTurnCards)
         {
             if (FieldCards.Contains(card))
             {
                 FieldCards.Remove(card);
-                CurrentGame.Deck.Add(card.SelfCard); // Добавляем карту в Deck
-                Destroy(card.gameObject); // Уничтожаем игровой объект карты
+                CurrentGame.Deck.Add(card.SelfCard); 
+                Destroy(card.gameObject); 
             }
         }
-
-        // Очищаем список PreviousTurnCards
+        
         PreviousTurnCards.Clear(); 
-    
-        // Заполняем список PreviousTurnCards текущими картами на поле
+        
         PreviousTurnCards.AddRange(FieldCards);
         foreach (var card in FieldCards)
         {
@@ -416,7 +334,7 @@ public class GameManager : MonoBehaviour
             foreach (var card in FoldCards)
             {
                 CurrentGame.Deck.Add(card.SelfCard);
-                Destroy(card.gameObject); // Уничтожаем игровой объект карты
+                Destroy(card.gameObject); 
             }
             FoldCards.Clear(); 
             */
